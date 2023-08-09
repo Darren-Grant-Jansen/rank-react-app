@@ -1,0 +1,1 @@
+export const bannedCountries: string[] = ["Country1", "Country2", "Country3"];
