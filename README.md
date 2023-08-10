@@ -19,6 +19,19 @@ Currently, two official plugins are available:
     * npm run dev
     your development server will start running and you can access the project through the URL (usually http://localhost:port_num) in your terminal
 
+## Testing
+ For testing the credit card number input, these numbers are universally recognized as test numbers and won't result in an actual transaction.
+ Here are some test numbers:
+
+   * 4111 1111 1111 1111 - VISA
+   * 5555 5555 5555 4444 - MasterCard
+   * 3400 0000 0000 009 - American Express (AMEX)
+   * 6011 0000 0000 0004 - Discover
+   * 3530 1113 3330 0000 - JCB
+   * 3566 0020 2036 0505 - JCB
+   * 2222 4200 0000 1112 - MasterCard (2-series)
+   * 5018 0000 0009 - Maestro
+
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
