@@ -27,7 +27,6 @@ const CountrySelect = ({selectedCountry, setSelectedCountry}: CountrySelectProps
 
   const handleChange = (selectedOption: Country | null) => {
     setSelectedCountry(selectedOption);
-    // Handle other logic like form submission here
   };
 
   return (
