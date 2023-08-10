@@ -1,4 +1,4 @@
-import BannedCountries from "../utils/BannedCountriesManager";
+import BannedCountries from "./BannedCountriesService";
 import { CreditCard } from "../models/CreditCard";
 
 class CreditCardService {

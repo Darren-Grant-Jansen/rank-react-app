@@ -9,7 +9,7 @@ Currently, two official plugins are available:
 
 ## Getting Started
 
-- Clone the repository to your local machine.
+- Clone/download the repository to your local machine.
 - Install Node.js: If you don't have it already, download and install the latest version of Node.js from the official website (https://nodejs.org).
 - Navigate to the project directory.
     * cd rank-react-app      

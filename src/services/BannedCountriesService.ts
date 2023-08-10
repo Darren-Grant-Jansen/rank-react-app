@@ -1,4 +1,4 @@
-class BannedCountriesManager {
+class BannedCountriesService {
     private _bannedCountries: string[] = ["South Africa", "Russia", "Belarus"];
   
     get list(): string[] {
@@ -19,6 +19,6 @@ class BannedCountriesManager {
     }
   }
   
-  const BannedCountries = new BannedCountriesManager();
+  const BannedCountries = new BannedCountriesService();
   export default BannedCountries;
   

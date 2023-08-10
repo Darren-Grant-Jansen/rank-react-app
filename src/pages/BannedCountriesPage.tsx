@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BannedCountries  from "../utils/BannedCountriesManager";
+import BannedCountries  from "../services/BannedCountriesService";
 import BannedCountriesList from "../components/listGroup/BannedCountriesList";
 import Button from '../components/buttons/Button';
 import styles from './pages.module.css';
