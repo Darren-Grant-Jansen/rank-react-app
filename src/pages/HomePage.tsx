@@ -1,8 +1,12 @@
-import CreditCardForm from "../components/forms/CreditCardForm"
+import CreditCardForm from "../components/forms/CreditCardForm";
+import styles from "./pages.module.css";
 
 const HomePage = () => {
   return (
-    <CreditCardForm />
+    <div className={styles.topPadding}>
+      <CreditCardForm />
+    </div>
+    
   )
 }
 

@@ -1,36 +1,53 @@
-import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
-import { CreditCardProvider } from '../../store/CreditCardContext';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import HomePage from '../../pages/HomePage';
 import BannedCountriesPage from '../../pages/BannedCountriesPage';
 import CreditCardsPage from '../../pages/CreditCardsPage';
-
+import styles from './NavigationMenu.module.css';  
 
 const NavigationMenu = () => {
   return (
-    <CreditCardProvider>
-      <Router>
-        <header>
-          <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  <Link to="/"><li className="nav-item"><a className="nav-link" href="#"><BsFillCreditCard2FrontFill size="30"/></a></li></Link>
-                  <Link to="/credit-cards"><li className="nav-item"><a className="nav-link" href="#">Captured Cards</a></li></Link>
-                  <Link to="/banned-countries"><li className="nav-item"><a className="nav-link" href="#">Banned Countries</a></li></Link>
-                </ul>
-              </div>
+    <Router>
+      <header>
+        <nav className={`navbar navbar-expand-lg bg-body-tertiary ${styles.navbarCustom}`}>
+          <div className="container-fluid">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <NavLinks />
             </div>
-          </nav>
-        </header>
-        <Routes>
-          <Route path='/' element={ <HomePage />} />
-          <Route path='/credit-cards' element={ <CreditCardsPage /> } />
-          <Route path='/banned-countries' element={ <BannedCountriesPage /> } />
-        </Routes>
-      </Router>
-    </CreditCardProvider>
-  )
+          </div>
+        </nav>
+      </header>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/credit-cards" element={<CreditCardsPage />} />
+        <Route path="/banned-countries" element={<BannedCountriesPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default NavigationMenu
+const NavLinks = () => {
+  const location = useLocation();
+  const isActive = (path: string) => location.pathname === path;
+
+  return (
+    <ul className={`navbar-nav ${styles.navbarNavCustom}`}>
+      <li className="nav-item">
+        <NavLink to="/" className={isActive('/') ? styles.activeLinkStyle : styles.linkStyle}>
+          Home
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink to="/credit-cards" className={isActive('/credit-cards') ? styles.activeLinkStyle : styles.linkStyle}>
+          Captured Cards
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink to="/banned-countries" className={isActive('/banned-countries') ? styles.activeLinkStyle : styles.linkStyle}>
+          Banned Countries
+        </NavLink>
+      </li>
+    </ul>
+  );
+}
+
+export default NavigationMenu;

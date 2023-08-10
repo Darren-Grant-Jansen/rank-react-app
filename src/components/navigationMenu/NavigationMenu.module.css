@@ -1,0 +1,23 @@
+/* NavigationMenu.module.css */
+.navbarCustom {
+    padding: 1rem 2rem;
+}
+
+.navbarNavCustom {
+    gap: 2rem;
+}
+
+.linkStyle {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.activeLinkStyle {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+}

@@ -4,12 +4,16 @@ import Button from "../buttons/Button";
 import ExpiryDateInput from "../inputField/ExpiryDateInput";
 import CountrySelect from "../dropdown/CountrySelect";
 import { Country } from '../../models/Country';
+import CvvInput from "../inputField/CvvInput";
+import CreditCardInput from "../inputField/CreditCardInput";
 
 
 const CreditCardForm = () => {
   const [cardName, setCardName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
+  const [isCardNumberValid, setIsCardNumberValid] = useState(true);
   const [cvv, setCvv] = useState("");
+  const [isCvvValid, setIsCvvValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
   const [expiryDate, setExpiryDate] = useState("");
@@ -17,17 +21,12 @@ const CreditCardForm = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
   const isCardNameValid = () => cardName !== "";
-  const isCardNumberValid = () => /^(\d{4}\s?){4}$/.test(cardNumber); // Basic check for a 16 digit card number
-  const isCVVValid = () => /^\d{3,4}$/.test(cvv);
 
   const handleSubmit = () => {
-    console.log(selectedCountry);
-    console.log(isValid);
-    console.log(expiryDate);
     
     setErrorMessage("");
 
-    if (!isCardNameValid() || !isCardNumberValid() || !isCVVValid() || !isValid || !selectedCountry) {
+    if (!isCardNameValid() || !isCardNumberValid || !isCvvValid || !isValid || !selectedCountry) {
       setErrorMessage("Please ensure all fields are correctly filled.");
       return;
     }
@@ -53,7 +52,7 @@ const CreditCardForm = () => {
     <div className="row">
       <form onSubmit={handleSubmit}>
         <div className="col">
-          <h4 className="mb-3">Submit credit card</h4>
+          <h4 className="mb-3">Submit credit card details</h4>
           <div className="row gy-3">
             <div className="col-md-6">
               <label htmlFor="cc-name" className="form-label">Name on card</label>
@@ -72,13 +71,7 @@ const CreditCardForm = () => {
 
             <div className="col-md-6">
               <label htmlFor="cc-number" className="form-label">Credit card number</label>
-              <input type="text" 
-                className="form-control" 
-                id="cc-number" 
-                placeholder="" 
-                value={cardNumber} 
-                onChange={(e) => setCardNumber(e.target.value)}
-                required />
+              <CreditCardInput cardNumber={cardNumber} setCardNumber={setCardNumber} isCardNumberValid={isCardNumberValid} setIsCardNumberValid={setIsCardNumberValid} />
               <div className="invalid-feedback">Credit card number is required</div>
             </div>
 
@@ -90,14 +83,7 @@ const CreditCardForm = () => {
 
             <div className="col-md-3">
               <label htmlFor="cc-cvv" className="form-label">CVV</label>
-              <input type="text" 
-                className="form-control" 
-                id="cc-cvv" 
-                placeholder=""
-                value={cvv} 
-                onChange={(e) => setCvv(e.target.value)} 
-                required />
-              <div className="invalid-feedback">Security code required</div>
+              <CvvInput cvv={cvv} setCvv={setCvv} isCvvValid={isCvvValid} setIsCvvValid={setIsCvvValid}/>
             </div>
 
             <div className="col-md-6">

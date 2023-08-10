@@ -1,4 +1,5 @@
-import { CreditCard } from "../models/CreditCard";
+import { CreditCard } from "../../models/CreditCard";
+import styles from '../../components/listGroup/CreditCardList.module.css';
 
 interface CreditCardListProps {
   cards: CreditCard[];
@@ -7,7 +8,7 @@ interface CreditCardListProps {
 
 const CreditCardList = ({ cards, heading }: CreditCardListProps) => {
   return (
-    <div className="row">
+    <div className={`row ${styles.topPadding}`}>
         <div className="col">
             { heading ? <h4 className="d-flex justify-content-between align-items-center mb-3">
                 <span className="text-primary">{heading}</span>
@@ -19,7 +20,7 @@ const CreditCardList = ({ cards, heading }: CreditCardListProps) => {
                             <h6 className="my-0">{card.cardNumber}</h6>
                             <small className="text-body-secondary">{card.cardName}</small>
                         </div>
-                        <span className="text-body-secondary">{card.expiryDate}</span>
+                        <span className="text-body-secondary">{card.country}</span>
                     </li>
                 ))}
             </ul>

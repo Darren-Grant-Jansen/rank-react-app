@@ -1,4 +1,4 @@
-import { bannedCountries } from "../utils/bannedCountries";
+import BannedCountries from "../utils/BannedCountriesManager";
 import { CreditCard } from "../models/CreditCard";
 
 class CreditCardService {
@@ -15,7 +15,7 @@ class CreditCardService {
   }
 
   static isCountryBanned(country: string): boolean {
-    return bannedCountries.includes(country);
+    return BannedCountries.list.includes(country);
   }
 
   static getCapturedCards(): CreditCard[] {
